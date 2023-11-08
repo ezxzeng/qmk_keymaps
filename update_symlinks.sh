@@ -1,8 +1,10 @@
 #!/bin/bash
 # inspired by https://github.com/patrick-elmquist/qmk-keymaps
 USER=ezxzeng
-# exec
-# read header
+
+ln -sf $(pwd)/user qmk_firmware/users/${USER}
+echo "users/${USER}"
+
 while IFS="," read -r keyboard_name qmk_path
 do
 	# remove trailing and leading white space
@@ -22,3 +24,4 @@ do
 	echo ${keymap_path}
 
 done < <(tail -n +2 user_keymaps/paths.csv)
+
