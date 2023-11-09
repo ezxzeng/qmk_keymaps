@@ -9,6 +9,7 @@ for i in "${!keyboards[@]}"; do
     qmk c2json -kb ${keyboards[i]} -km ezxzeng -o user_keymaps/${folders[i]}/keymap.json user_keymaps/${folders[i]}/keymap.c
     keymap parse -c "${columns[i]}" -q user_keymaps/${folders[i]}/keymap.json >user_keymaps/${folders[i]}/keymap.yaml
     keymap draw user_keymaps/${folders[i]}/keymap.yaml >user_keymaps/${folders[i]}/keymap.svg
+    echo "![keymap.svg](keymap.svg)" > user_keymaps/${folders[i]}/readme.md
     rm user_keymaps/${folders[i]}/keymap.json
     rm user_keymaps/${folders[i]}/keymap.yaml
 
