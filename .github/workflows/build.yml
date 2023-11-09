@@ -1,0 +1,49 @@
+name: Build QMK firmware
+on: 
+  workflow_dispatch:
+    inputs:
+      keyboard_names:
+        description: "List of keyboards to build"
+        default: '["crkbd","ferris/sweep"]'
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
+    strategy:
+      fail-fast: false
+      matrix:
+# List of keymap json files to build
+        keyboard_name: ${{ fromJSON(github.event.inputs.keyboard_names)}}
+    steps:
+      - name: Disable git safe directory checks
+        run : git config --global --add safe.directory '*'
+
+      - name: Checkout userspace
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Add symlinks
+        run: bash ./update_symlinks.sh
+
+      - name: set qmk home
+        run: qmk config user.qmk_home=qmk_firmware
+        
+      - name: Build firmware
+        run: qmk compile -km=${{ github.actor }} -kb=${{ matrix.keyboard_name }}
+
+      - name: clean output name
+        id: clean-name
+        run: echo "firmware_output_name=${{ matrix.keyboard_name }}_${{ github.actor }}" | sed 's/\//_/' >> "$GITHUB_OUTPUT"
+
+      - name: Archive firmware
+        uses: actions/upload-artifact@v3
+        continue-on-error: true
+        with:
+          name: ${{ steps.clean-name.outputs.firmware_output_name }}
+          path: |
+            qmk_firmware/*.hex
+            qmk_firmware/*.bin
+            qmk_firmware/*.uf2

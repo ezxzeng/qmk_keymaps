@@ -3,9 +3,9 @@
 USER=ezxzeng
 
 # cleanup old symlinks
-rm qmk_firmware/users/${USER}
+# rm qmk_firmware/users/${USER}
 # add new symlinks
-ln -s $(pwd)/user qmk_firmware/users/${USER}
+ln -sfn $(pwd)/user qmk_firmware/users/${USER}
 echo "users/${USER}"
 
 while IFS="," read -r keyboard_name qmk_path
@@ -20,9 +20,9 @@ do
 	keymap_path="keyboards/${qmk_path}/keymaps/${USER}"
 	source_path="$(pwd)/user_keymaps/${keyboard_name}"
 	# cleanup old symlinks
-	rm qmk_firmware/${keymap_path}
+	# rm qmk_firmware/${keymap_path}	
 	# add new symlinks
-	ln -s ${source_path} qmk_firmware/${keymap_path}
+	ln -sfn ${source_path} qmk_firmware/${keymap_path}
 
 	# print for easy adding to gitignore
 	echo ${keymap_path}
