@@ -12,6 +12,8 @@ for i in "${!keyboards[@]}"; do
     echo "![keymap.svg](keymap.svg)" > user_keymaps/${folders[i]}/readme.md
     rm user_keymaps/${folders[i]}/_keymap.json
     rm user_keymaps/${folders[i]}/keymap.yaml
+    git add user_keymaps/${folders[i]}/keymap.svg
+    git add user_keymaps/${folders[i]}/readme.md
 
 done
 
@@ -24,4 +26,6 @@ done
 #     keymap parse -c "${columns[i]}" -q user_keymaps/${folders[i]}/keymap.json >user_keymaps/${folders[i]}/keymap.yaml
 #     keymap draw user_keymaps/${folders[i]}/keymap.yaml >user_keymaps/${folders[i]}/keymap.svg
 #     rm user_keymaps/${folders[i]}/keymap.yaml
+#     git add user_keymaps/${folders[i]}/keymap.svg
+#     git add user_keymaps/${folders[i]}/readme.md
 # done
