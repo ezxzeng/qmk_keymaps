@@ -3,12 +3,15 @@
 export keyboards=( "crkbd" "ferris/sweep" )
 export folders=( "crkbd" "ferris" )
 export columns=(12 10)
+export config_path="keymap_drawer.config.yaml"  # config file, ignored if not exists
+
+[ -e "$config_path" ] && config_arg=(-c "$config_path") || config_arg=()
 
 for i in "${!keyboards[@]}"; do
-
     qmk c2json -kb ${keyboards[i]} -km ezxzeng -o user_keymaps/${folders[i]}/_keymap.json user_keymaps/${folders[i]}/keymap.c
-    keymap parse -c "${columns[i]}" -q user_keymaps/${folders[i]}/_keymap.json >user_keymaps/${folders[i]}/keymap.yaml
-    keymap draw user_keymaps/${folders[i]}/keymap.yaml >user_keymaps/${folders[i]}/keymap.svg
+    echo keymap "${config_arg[@]}" parse -c "${columns[i]}" -q user_keymaps/${folders[i]}/_keymap.json >user_keymaps/${folders[i]}/keymap.yaml
+    keymap "${config_arg[@]}" parse -c "${columns[i]}" -q user_keymaps/${folders[i]}/_keymap.json >user_keymaps/${folders[i]}/keymap.yaml
+    keymap "${config_arg[@]}" draw user_keymaps/${folders[i]}/keymap.yaml >user_keymaps/${folders[i]}/keymap.svg
     echo "![keymap.svg](keymap.svg)" > user_keymaps/${folders[i]}/readme.md
     rm user_keymaps/${folders[i]}/_keymap.json
     rm user_keymaps/${folders[i]}/keymap.yaml

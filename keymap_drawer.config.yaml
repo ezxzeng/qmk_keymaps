@@ -1,0 +1,230 @@
+parse_config:
+  mark_alternate_layer_activators: true
+  sticky_label: $$mdi:gesture-tap-hold$$
+
+  raw_binding_map:
+    # Modifiers
+    "KC_CAPS": $$mdi:alpha-w-box$$
+    "KC_CAPS_LOCK": $$mdi:alpha-w-box$$
+
+    # Empty
+    "KC_NO":
+      tap: $$mdi:minus-circle-outline$$
+      type: none
+
+    # Reset
+    "QK_BOOTLOADER":
+      type: bootloader
+      tap: $$mdi:backup-restore$$
+    "QK_BOOT":
+      type: bootloader
+      tap: $$mdi:backup-restore$$
+
+    #debug
+    "DB_TOGG":
+      tap: $$mdi:bug$$
+
+    "QK_GESC":
+      tap: $$mdi:keyboard-esc$$
+      shifted: "`"
+
+  # QMK
+  qmk_keycode_map:
+    '0':
+      shifted: )
+      tap: 0
+    '1':
+      shifted: '!'
+      tap: 1
+    '2':
+      shifted: '@'
+      tap: 2
+    '3':
+      shifted: '#'
+      tap: 3
+    '4':
+      shifted: $
+      tap: 4
+    '5':
+      shifted: '%'
+      tap: 5
+    '6':
+      shifted: ^
+      tap: 6
+    '7':
+      shifted: '&'
+      tap: 7
+    '8':
+      shifted: '*'
+      tap: 8
+    '9':
+      shifted: (
+      tap: 9
+
+    BSLS:
+      shifted: '|'
+      tap: \
+    BSPC:
+      tap: $$mdi:backspace$$
+      type: backspace
+    CAPS: $$mdi:apple-keyboard-caps$$
+    CNCL: $$mdi:close-box$$
+    COMM:
+      shifted: <
+      tap: ','
+    DEL: $$mdi:backspace-reverse-outline$$
+    DOT:
+      shifted: '>'
+      tap: .
+    DOWN: $$mdi:arrow-down-bold$$
+    ENT:
+      tap: $$mdi:keyboard-return$$
+      type: enter
+    EQL:
+      shifted: +
+      tap: '='
+    GRV:
+      shifted: '~'
+      tap: '`'
+    LBRC:
+      shifted: '{'
+      tap: '['
+    LEFT: $$mdi:arrow-left-bold$$
+    MINS:
+      shifted: _
+      tap: '-'
+    MNXT: $$mdi:skip-next$$
+    MUTE: $$mdi:volume-off$$
+    NUBS: \
+    NUHS: '#'
+    QUOT:
+      shifted: '"'
+      tap: ''''
+    RBRC:
+      shifted: '}'
+      tap: ']'
+    RGHT: $$mdi:arrow-right-bold$$
+    SCLN:
+      shifted: ':'
+      tap: ;
+    SLSH:
+      shifted: '?'
+      tap: /
+    SPC: $$mdi:keyboard-space$$
+    TAB: $$mdi:keyboard-tab$$
+    UP: $$mdi:arrow-up-bold$$
+    WAKE: $$mdi:power-standby$$
+
+    # Symbols
+    EXLM: "!"
+    EXCLAIM: "!"
+    AT: "@"
+    HASH: "#"
+    POUND: "#"
+    DOLLAR: $
+    DLR: $
+    PERCENT: "%"
+    PERC: "%"
+    CIRCUMFLEX: ^
+    CIRC: ^
+    AMPERSAND: "&"
+    AMPR: "&"
+    ASTERISK: "*"
+    ASTR: "*"
+    STAR: "*"
+    LEFT_PAREN: (
+    LPRN: (
+    RIGHT_PAREN: )
+    RPRN: )
+    PLUS: +
+    UNDERSCORE: _
+    UNDS: _
+    QUESTION: "?"
+    QUES: "?"
+    PIPE: "|"
+    NON_US_BSLH: "|"
+    COLON: ":"
+    COLN: ":"
+    APOSTROPHE: <
+    APOS: .
+    DOUBLE_QUOTE: '"'
+    DQT: '"'
+    DQUO: '"'
+
+    LEFT_ANGLE_BRACKET: <
+    LABK: <
+    LT: <
+    RIGHT_ANGLE_BRACKET: ">"
+    RABK: ">"
+    GT: ">"
+    LEFT_CURLY_BRACE: "{"
+    LCBR: "{"
+    RIGHT_CURLY_BRACE: "}"
+    RCBR: "}"
+    TILDE: "~"
+    TILD: "~"
+    NUHS: "#"
+    HASH: "#"
+
+    # Modifiers
+    LCTL: $$mdi:apple-keyboard-control$$
+    LALT: $$mdi:apple-keyboard-option$$
+    LSFT: $$mdi:apple-keyboard-shift$$
+    LCMD: $$mdi:apple-keyboard-command$$
+    LGUI: $$mdi:apple-keyboard-command$$
+    RCTL: $$mdi:apple-keyboard-control$$
+    RALT: $$mdi:apple-keyboard-option$$
+    RSFT: $$mdi:apple-keyboard-shift$$
+    RCMD: $$mdi:apple-keyboard-command$$
+    RGUI: $$mdi:apple-keyboard-command$$
+    # "Meh" key
+    LS(LC(LALT)): $$mdi:star-three-points$$
+
+    ESCAPE: $$mdi:keyboard-esc$$
+    ESC: $$mdi:keyboard-esc$$
+    TAB: $$mdi:keyboard-tab$$
+    SPACE: $$mdi:keyboard-space$$
+    BSPC:
+      type: backspace
+      tap: $$mdi:backspace$$
+    DEL: $$mdi:backspace-reverse-outline$$
+
+    CAPS: $$mdi:apple-keyboard-caps$$
+
+    VOLU: $$mdi:volume-high$$
+    VOLD: $$mdi:volume-low$$
+
+    # Media
+    C_PREV: $$mdi:skip-previous$$
+    C_PP: $$mdi:play-pause$$
+
+    # Settings
+    C_BRI_UP: $$mdi:brightness-5$$
+    C_BRI_DN: $$mdi:brightness-7$$
+
+    # Mouse
+    WH_U: 
+      tap: scroll
+      shifted: $$mdi:arrow-up-thin$$
+    WH_D: 
+      tap: scroll
+      hold: $$mdi:arrow-down-thin$$
+    WH_L: 
+      tap: scroll
+      hold: $$mdi:menu-left$$
+    WH_R: 
+      tap: scroll
+      hold: $$mdi:menu-right$$
+    MS_U: 
+      tap: $$mdi:mouse$$ 
+      shifted: $$mdi:arrow-up-thin$$
+    MS_D: 
+      tap: $$mdi:mouse$$ 
+      hold: $$mdi:arrow-down-thin$$
+    MS_L: 
+      tap: $$mdi:mouse$$ 
+      hold: $$mdi:menu-left$$
+    MS_R: 
+      tap: $$mdi:mouse$$
+      hold: $$mdi:menu-right$$
+    
